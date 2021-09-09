@@ -1,14 +1,21 @@
-import { loginController } from "./controllers/LoginController"
+import LoginController from "./controllers/LoginController"
 
 const PREFIX = '/api'
+export default class Routes {
+    public loginController: LoginController
 
-const routes = [
-    {
-        path: `${PREFIX}/user/login`, 
-        method: 'post', 
-        needAuth: false, 
-        handler: loginController
+    constructor() {
+        this.loginController = new LoginController()
     }
-]
 
-export default routes
+    public get() {
+        return [
+            {
+                path: `${PREFIX}/user/login`, 
+                method: 'post', 
+                needAuth: false, 
+                handler: this.loginController.login
+            }
+        ]
+    }
+}
