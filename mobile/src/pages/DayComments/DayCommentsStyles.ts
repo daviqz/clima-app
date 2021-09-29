@@ -39,7 +39,7 @@ const DayCommentsStyles = StyleSheet.create({
   image: {
     width: 70,
     height: 70,
-    backgroundColor: "#ffffff",
+    backgroundColor: "white",
     borderRadius: 10,
   },
 });

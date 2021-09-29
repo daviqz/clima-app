@@ -6,7 +6,7 @@ import { Feather } from "@expo/vector-icons";
 const LogoutButton: React.FC = () => {
   return (
     <TouchableOpacity style={styles.container}>
-      <Feather name="log-out" size={24} color="#ffffff" />
+      <Feather name="log-out" size={24} color="white" />
     </TouchableOpacity>
   );
 };

@@ -1,12 +1,14 @@
 import { StyleSheet } from "react-native";
 
+import { darkColor } from "../../colors";
+
 const HistoryCommentsStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 120,
     width: "100%",
     padding: 17,
-    backgroundColor: "#6d64b6",
+    backgroundColor: darkColor,
   },
   title: {
     fontFamily: "Poppins_600SemiBold",
@@ -41,7 +43,7 @@ const HistoryCommentsStyles = StyleSheet.create({
   image: {
     width: 70,
     height: 70,
-    backgroundColor: "#ffffff",
+    backgroundColor: "white",
     borderRadius: 10,
   },
 });

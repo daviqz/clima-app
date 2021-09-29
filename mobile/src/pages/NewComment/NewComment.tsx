@@ -13,6 +13,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../interfaces/rootStackParamList";
 
 import NewCommentStyles from "./NewCommentStyles";
+import { darkColor, lightColor } from "../../colors";
 
 const NewComment: React.FC<
   NativeStackScreenProps<RootStackParamList, "NewComment">
@@ -54,7 +55,7 @@ const NewComment: React.FC<
           onChangeText={setComment}
           placeholder="Comentário"
           value={comment}
-          placeholderTextColor="#b2add7"
+          placeholderTextColor={lightColor}
           multiline
           numberOfLines={5}
           blurOnSubmit
@@ -67,7 +68,7 @@ const NewComment: React.FC<
                 style={NewCommentStyles.thumbnail}
               />
             ) : (
-              <Feather name="camera" size={24} color="#6d64b6" />
+              <Feather name="camera" size={24} color={darkColor} />
             )}
           </View>
         </TouchableOpacity>

@@ -1,42 +1,44 @@
 import { StyleSheet } from "react-native";
 
+import { darkColor, lightColor } from "../../colors";
+
 const HomeStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#6d64b6",
+    backgroundColor: darkColor,
   },
   textCity: {
     fontSize: 33,
     fontFamily: "Poppins_400Regular",
-    color: "#ffffff",
+    color: "white",
     marginBottom: 5,
   },
   textFullDate: {
     fontSize: 20,
     fontFamily: "Poppins_300Light",
-    color: "#ffffff",
+    color: "white",
     marginBottom: 20,
   },
   currentTemperature: {
     fontSize: 100,
     fontFamily: "Poppins_700Bold",
-    color: "#ffffff",
+    color: "white",
   },
   divider: {
-    color: "#ffffff",
+    color: "white",
     fontSize: 28,
     marginBottom: 25,
   },
   currentState: {
-    color: "#ffffff",
+    color: "white",
     fontFamily: "Poppins_500Medium",
     fontSize: 25,
     marginBottom: 7,
   },
   rangeTemperature: {
-    color: "#ffffff",
+    color: "white",
     fontFamily: "Poppins_500Medium",
     fontSize: 25,
     marginBottom: 80,
@@ -59,7 +61,7 @@ const HomeStyles = StyleSheet.create({
     fontFamily: "Poppins_700Bold",
   },
   buttonUp: {
-    backgroundColor: "#b2add7",
+    backgroundColor: lightColor,
     alignItems: "center",
     justifyContent: "center",
   },

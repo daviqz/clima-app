@@ -40,6 +40,7 @@ LogBox.ignoreAllLogs(true);
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
 const App = () => {
+  const [infoText, setInfoText] = useState("Buscando sua localização...");
   const [appIsLoading, setAppIsLoading] = useState<boolean>(true);
   const [fontsLoaded] = useFonts({
     Poppins_300Light,
@@ -59,6 +60,7 @@ const App = () => {
       }
 
       const { coords } = await Location.getCurrentPositionAsync({});
+      setInfoText("Buscando as informações do clima...");
       api
         .get(getForecastUrl(coords.latitude, coords.longitude))
         .then((result) => {
@@ -68,7 +70,7 @@ const App = () => {
   }, []);
 
   if (appIsLoading || !fontsLoaded) {
-    return <SplashScreen />;
+    return <SplashScreen infoText={infoText} />;
   }
 
   return (
@@ -85,7 +87,7 @@ const App = () => {
             },
             headerTitle: "Clima App",
             headerRight: () => <LogoutButton />,
-            headerTintColor: "#ffffff",
+            headerTintColor: "white",
           }}
           drawerContent={(props: DrawerContentComponentProps) => (
             <CustomDrawer {...props} />

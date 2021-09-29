@@ -49,7 +49,7 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
       <Text style={HomeStyles.rangeTemperature}>12ºc / 22ºc</Text>
       <View style={HomeStyles.containerForecast}>
         {forecastItems.map((it, index) => {
-          const color = currentForescast === index ? "#fff200" : "#ffffff";
+          const color = currentForescast === index ? "#fff200" : "white";
           return (
             <TouchableOpacity
               key={index}

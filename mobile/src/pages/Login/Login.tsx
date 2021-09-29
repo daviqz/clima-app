@@ -12,6 +12,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 import { RootStackParamList } from "../../interfaces/rootStackParamList";
 
+import { darkColor, lightColor } from "../../colors";
 import LoginStyles from "./LoginStyles";
 import cloud from "../../assets/cloud.png";
 import sun from "../../assets/sun.png";
@@ -38,7 +39,7 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
           <AntDesign
             name="user"
             size={24}
-            color="#6d64b6"
+            color={darkColor}
             style={LoginStyles.iconInput}
           />
           <TextInput
@@ -46,14 +47,14 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
             onChangeText={setUsername}
             placeholder="Usuário"
             value={username}
-            placeholderTextColor="#b2add7"
+            placeholderTextColor={lightColor}
           />
         </View>
         <View>
           <AntDesign
             name="lock"
             size={24}
-            color="#6d64b6"
+            color={darkColor}
             style={LoginStyles.iconInput}
           />
           <TextInput
@@ -61,7 +62,7 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
             onChangeText={setPassword}
             placeholder="Senha"
             value={password}
-            placeholderTextColor="#b2add7"
+            placeholderTextColor={lightColor}
             secureTextEntry
           />
         </View>

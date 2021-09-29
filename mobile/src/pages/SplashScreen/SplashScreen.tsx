@@ -1,9 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const SplashScreen: React.FC = () => (
+interface SplashScreenProps {
+  infoText: string;
+}
+
+const SplashScreen: React.FC<SplashScreenProps> = (props) => (
   <View style={styles.container}>
-    <Text style={styles.title}>Buscando sua localização...</Text>
+    <Text style={styles.title}>{props.infoText}</Text>
   </View>
 );
 

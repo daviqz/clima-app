@@ -1,11 +1,13 @@
 import { StyleSheet } from "react-native";
 
+import { darkColor } from "../../colors";
+
 const LoginStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#6d64b6",
+    backgroundColor: darkColor,
     padding: 5,
   },
   sunImage: {
@@ -16,7 +18,7 @@ const LoginStyles = StyleSheet.create({
     height: 90,
   },
   box: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "white",
     borderRadius: 20,
     width: "100%",
     padding: 25,
@@ -29,7 +31,7 @@ const LoginStyles = StyleSheet.create({
   headerText: {
     fontSize: 25,
     marginTop: 15,
-    color: "#6d64b6",
+    color: darkColor,
     marginBottom: 20,
     fontFamily: "Poppins_500Medium",
     letterSpacing: 1,
@@ -45,13 +47,13 @@ const LoginStyles = StyleSheet.create({
     backgroundColor: "#f2f2f2",
     borderRadius: 20,
     marginBottom: 5,
-    color: "#6d64b6",
+    color: darkColor,
     fontFamily: "Poppins_500Medium",
     fontWeight: "bold",
     paddingHorizontal: 45,
   },
   button: {
-    backgroundColor: "#6d64b6",
+    backgroundColor: darkColor,
     padding: 15,
     borderRadius: 20,
     alignItems: "center",
@@ -60,7 +62,7 @@ const LoginStyles = StyleSheet.create({
     marginBottom: 15,
   },
   buttonText: {
-    color: "#ffffff",
+    color: "white",
     fontFamily: "Poppins_500Medium",
     fontSize: 20,
   },
