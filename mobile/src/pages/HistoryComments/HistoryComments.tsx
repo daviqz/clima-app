@@ -1,29 +1,42 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { RootStackParamList } from "../../interfaces/rootStackParamList";
+import HistoryCommentsStyles from "./HistoryCommentsStyles";
 
 const HistoryComments: React.FC<
   NativeStackScreenProps<RootStackParamList, "HistoryComments">
-> = ({ navigation }) => {
+> = () => {
   return (
-    <View style={styles.container}>
-      <Text>HistoryComments Screen</Text>
-      <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate("Login")}
-      />
+    <View style={HistoryCommentsStyles.container}>
+      <Text style={HistoryCommentsStyles.title}>Meus comentários</Text>
+      <ScrollView>
+        <Text style={HistoryCommentsStyles.date}>27/09/2021</Text>
+        {Array.from({ length: 2 }).map((_, index) => (
+          <View key={index} style={HistoryCommentsStyles.commentContainer}>
+            <View style={HistoryCommentsStyles.boxComment}>
+              <Text style={HistoryCommentsStyles.user}>Eu</Text>
+              <Text style={HistoryCommentsStyles.comment}>Comentário</Text>
+            </View>
+            <View style={HistoryCommentsStyles.image} />
+          </View>
+        ))}
+
+        <Text style={HistoryCommentsStyles.date}>29/09/2021</Text>
+        {Array.from({ length: 3 }).map((_, index) => (
+          <View key={index} style={HistoryCommentsStyles.commentContainer}>
+            <View style={HistoryCommentsStyles.boxComment}>
+              <Text style={HistoryCommentsStyles.user}>Eu</Text>
+              <Text style={HistoryCommentsStyles.comment}>Comentário</Text>
+            </View>
+            <View style={HistoryCommentsStyles.image} />
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default HistoryComments;

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const LoginStyles = StyleSheet.create({
+const NewCommentStyles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
@@ -8,23 +8,11 @@ const LoginStyles = StyleSheet.create({
     backgroundColor: "#6d64b6",
     padding: 5,
   },
-  sunImage: {
-    position: "absolute",
-    left: 20,
-    top: 120,
-    width: 90,
-    height: 90,
-  },
   box: {
     backgroundColor: "#ffffff",
     borderRadius: 20,
     width: "100%",
     padding: 25,
-  },
-  cloudImage: {
-    position: "absolute",
-    right: 0,
-    top: -60,
   },
   headerText: {
     fontSize: 25,
@@ -34,13 +22,8 @@ const LoginStyles = StyleSheet.create({
     fontFamily: "Poppins_500Medium",
     letterSpacing: 1,
   },
-  iconInput: {
-    zIndex: 99,
-    top: 41,
-    left: 10,
-  },
   input: {
-    height: 60,
+    height: 150,
     borderColor: "gray",
     backgroundColor: "#f2f2f2",
     borderRadius: 20,
@@ -48,7 +31,25 @@ const LoginStyles = StyleSheet.create({
     color: "#6d64b6",
     fontFamily: "Poppins_500Medium",
     fontWeight: "bold",
-    paddingHorizontal: 45,
+    paddingHorizontal: 20,
+    paddingTop: 15,
+  },
+  imageContainer: {
+    width: "100%",
+    height: 200,
+    borderRadius: 20,
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    borderStyle: "dotted",
+    borderWidth: 3,
+    borderColor: "#6d64b6",
+  },
+  thumbnail: {
+    width: "100%",
+    height: "100%",
+    borderRadius: 20,
+    resizeMode: "contain",
   },
   button: {
     backgroundColor: "#6d64b6",
@@ -66,4 +67,4 @@ const LoginStyles = StyleSheet.create({
   },
 });
 
-export default LoginStyles;
+export default NewCommentStyles;

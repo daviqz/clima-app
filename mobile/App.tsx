@@ -8,6 +8,7 @@ import {
   Poppins_700Bold,
   Poppins_800ExtraBold,
 } from "@expo-google-fonts/poppins";
+import { LogBox } from "react-native";
 import * as Location from "expo-location";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -23,6 +24,7 @@ import { getForecastUrl } from "./src/utils";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import CustomDrawer from "./src/components/CustomDrawer/CustomDrawer";
 import LogoutButton from "./src/components/LogoutButton/LogoutButton";
@@ -31,6 +33,9 @@ import SplashScreen from "./src/pages/SplashScreen/SplashScreen";
 import Home from "./src/pages/Home/Home";
 import Login from "./src/pages/Login/Login";
 import HistoryComments from "./src/pages/HistoryComments/HistoryComments";
+import NewComment from "./src/pages/NewComment/NewComment";
+
+LogBox.ignoreAllLogs(true);
 
 const Drawer = createDrawerNavigator<RootStackParamList>();
 
@@ -58,7 +63,6 @@ const App = () => {
         .get(getForecastUrl(coords.latitude, coords.longitude))
         .then((result) => {
           setAppIsLoading(false);
-          console.log(result);
         });
     })();
   }, []);
@@ -77,7 +81,7 @@ const App = () => {
             headerShown: true,
             headerTransparent: true,
             headerTitleStyle: {
-              fontFamily: 'Poppins_500Medium'
+              fontFamily: "Poppins_500Medium",
             },
             headerTitle: "Clima App",
             headerRight: () => <LogoutButton />,
@@ -114,6 +118,19 @@ const App = () => {
             }}
           />
           <Drawer.Screen
+            name="NewComment"
+            component={NewComment}
+            options={{
+              drawerLabel: "Novo comentário",
+              drawerLabelStyle: {
+                marginLeft: -15,
+              },
+              drawerIcon: () => (
+                <Ionicons name="chatbox-outline" size={20} color="black" />
+              ),
+            }}
+          />
+          <Drawer.Screen
             name="HistoryComments"
             component={HistoryComments}
             options={{
@@ -122,7 +139,11 @@ const App = () => {
                 marginLeft: -15,
               },
               drawerIcon: () => (
-                <Ionicons name="chatbox-outline" size={20} color="black" />
+                <MaterialCommunityIcons
+                  name="history"
+                  size={20}
+                  color="black"
+                />
               ),
             }}
           />

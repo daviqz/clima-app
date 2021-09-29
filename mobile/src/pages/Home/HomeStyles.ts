@@ -59,7 +59,7 @@ const HomeStyles = StyleSheet.create({
     fontFamily: "Poppins_700Bold",
   },
   buttonUp: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#b2add7",
     alignItems: "center",
     justifyContent: "center",
   },

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -23,14 +23,14 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
   const [password, setPassword] = useState("");
 
   const goToHome = () => {
+    setUsername("");
+    setPassword("");
     navigation.navigate("Home");
   };
 
   return (
     <KeyboardAvoidingView behavior="padding" style={LoginStyles.container}>
       <Image style={LoginStyles.sunImage} source={sun} />
-      <Text style={LoginStyles.title1}>Saiba</Text>
-      <Text style={LoginStyles.title2}>a temperatura</Text>
       <View style={LoginStyles.box}>
         <Image style={LoginStyles.cloudImage} source={cloud} />
         <Text style={LoginStyles.headerText}>Entrar</Text>

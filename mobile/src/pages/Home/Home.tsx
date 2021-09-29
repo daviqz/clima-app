@@ -7,9 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 import { RootStackParamList } from "../../interfaces/rootStackParamList";
-
-import HomeStyles from "./HomeStyles";
 import DayComments from "../DayComments/DayComments";
+import HomeStyles from "./HomeStyles";
 
 type ForecastDays = {
   icon: any;
@@ -35,47 +34,49 @@ const forecastItems: ForecastDays[] = [
   },
 ];
 
-const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> =
-  () => {
-    const [currentForescast, setCurrentForeCast] = useState(0);
+const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
+  navigation,
+}) => {
+  const [currentForescast, setCurrentForeCast] = useState(0);
 
-    return (
-      <View style={HomeStyles.container}>
-        <Text style={HomeStyles.textCity}>Juiz de Fora</Text>
-        <Text style={HomeStyles.textFullDate}>Quarta, 13 Outubro, 2021</Text>
-        <Text style={HomeStyles.currentTemperature}>18ºc</Text>
-        <Text style={HomeStyles.divider}>--------------</Text>
-        <Text style={HomeStyles.currentState}>Nublado</Text>
-        <Text style={HomeStyles.rangeTemperature}>12ºc / 22ºc</Text>
-        <View style={HomeStyles.containerForecast}>
-          {forecastItems.map((it, index) => {
-            const color = currentForescast === index ? "#fff200" : "#ffffff";
-            return (
-              <TouchableOpacity
-                key={index}
-                style={HomeStyles.boxForecastItem}
-                onPress={() => setCurrentForeCast(index)}
-              >
-                <Ionicons name={it.icon} size={40} color={color} />
-                <Text style={{ ...HomeStyles.rangeTemperatureForecast, color }}>
-                  {it.rangeTemp}
-                </Text>
-                <Text style={{ ...HomeStyles.dayForecast, color }}>
-                  {it.day}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+  return (
+    <View style={HomeStyles.container}>
+      <Text style={HomeStyles.textCity}>Juiz de Fora</Text>
+      <Text style={HomeStyles.textFullDate}>Quarta, 13 Outubro, 2021</Text>
+      <Text style={HomeStyles.currentTemperature}>18ºc</Text>
+      <Text style={HomeStyles.divider}>--------------</Text>
+      <Text style={HomeStyles.currentState}>Nublado</Text>
+      <Text style={HomeStyles.rangeTemperature}>12ºc / 22ºc</Text>
+      <View style={HomeStyles.containerForecast}>
+        {forecastItems.map((it, index) => {
+          const color = currentForescast === index ? "#fff200" : "#ffffff";
+          return (
+            <TouchableOpacity
+              key={index}
+              style={HomeStyles.boxForecastItem}
+              onPress={() => setCurrentForeCast(index)}
+            >
+              <Ionicons name={it.icon} size={40} color={color} />
+              <Text style={{ ...HomeStyles.rangeTemperatureForecast, color }}>
+                {it.rangeTemp}
+              </Text>
+              <Text style={{ ...HomeStyles.dayForecast, color }}>{it.day}</Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      {currentForescast === 0 && (
         <SwipeUpDown
           itemMini={<AntDesign name="up" size={25} color="black" />}
-          itemFull={<DayComments />}
+          itemFull={<DayComments navigation={navigation} />}
           onShowFull={() => console.log("full")}
-          disablePressToShow={true}
+          disablePressToShow={false}
           style={HomeStyles.buttonUp}
+          swipeHeight={80}
         />
-      </View>
-    );
-  };
+      )}
+    </View>
+  );
+};
 
 export default Home;

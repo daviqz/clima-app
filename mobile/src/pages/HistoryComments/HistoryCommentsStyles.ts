@@ -1,21 +1,23 @@
 import { StyleSheet } from "react-native";
 
-const DayCommentsStyles = StyleSheet.create({
+const HistoryCommentsStyles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 70,
+    paddingTop: 120,
     width: "100%",
-    padding: 7,
-  },
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 30,
+    padding: 17,
+    backgroundColor: "#6d64b6",
   },
   title: {
     fontFamily: "Poppins_600SemiBold",
     fontSize: 20,
+    marginBottom: 10,
+  },
+  date: {
+    fontFamily: "Poppins_600SemiBold",
+    fontSize: 16,
+    marginTop: 20,
+    marginBottom: 5,
   },
   commentContainer: {
     flexDirection: "row",
@@ -44,4 +46,4 @@ const DayCommentsStyles = StyleSheet.create({
   },
 });
 
-export default DayCommentsStyles;
+export default HistoryCommentsStyles;
