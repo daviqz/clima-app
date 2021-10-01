@@ -8,12 +8,12 @@ const LoginStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: darkColor,
-    padding: 5,
+    padding: 18,
   },
   sunImage: {
     position: "absolute",
     left: 20,
-    top: 120,
+    top: 80,
     width: 90,
     height: 90,
   },
@@ -22,6 +22,7 @@ const LoginStyles = StyleSheet.create({
     borderRadius: 20,
     width: "100%",
     padding: 25,
+    marginTop: 60
   },
   cloudImage: {
     position: "absolute",
@@ -37,20 +38,21 @@ const LoginStyles = StyleSheet.create({
     letterSpacing: 1,
   },
   iconInput: {
+    position: "absolute",
     zIndex: 99,
-    top: 41,
-    left: 10,
+    top: 17,
+    left: 10
   },
   input: {
     height: 60,
     borderColor: "gray",
     backgroundColor: "#f2f2f2",
     borderRadius: 20,
-    marginBottom: 5,
+    marginBottom: 15,
     color: darkColor,
     fontFamily: "Poppins_500Medium",
-    fontWeight: "bold",
     paddingHorizontal: 45,
+    paddingTop: 3
   },
   button: {
     backgroundColor: darkColor,
@@ -58,13 +60,13 @@ const LoginStyles = StyleSheet.create({
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 15,
   },
   buttonText: {
     color: "white",
     fontFamily: "Poppins_500Medium",
-    fontSize: 20,
+    fontSize: 18,
   },
 });
 

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ImageBackground, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import SwipeUpDown from "react-native-swipe-up-down";
@@ -9,6 +9,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { RootStackParamList } from "../../interfaces/rootStackParamList";
 import DayComments from "../DayComments/DayComments";
 import HomeStyles from "./HomeStyles";
+
+import bg1 from "../../assets/bg1.jpg";
+import bg2 from "../../assets/bg2.jpg";
+import bg3 from "../../assets/bg3.jpg";
+import bg4 from "../../assets/bg4.jpg";
+import bg5 from "../../assets/bg5.jpg";
 
 type ForecastDays = {
   icon: any;
@@ -39,8 +45,14 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
 }) => {
   const [currentForescast, setCurrentForeCast] = useState(0);
 
+  const arrayImages = [bg1, bg2, bg3, bg4, bg5];
+
   return (
-    <View style={HomeStyles.container}>
+    <ImageBackground
+      source={arrayImages[Math.floor(Math.random() * arrayImages.length)]}
+      resizeMode="cover"
+      style={HomeStyles.container}
+    >
       <Text style={HomeStyles.textCity}>Juiz de Fora</Text>
       <Text style={HomeStyles.textFullDate}>Quarta, 13 Outubro, 2021</Text>
       <Text style={HomeStyles.currentTemperature}>18ºc</Text>
@@ -67,15 +79,15 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
       </View>
       {currentForescast === 0 && (
         <SwipeUpDown
-          itemMini={<AntDesign name="up" size={25} color="black" />}
+          itemMini={<AntDesign name="up" size={25} color="white" />}
           itemFull={<DayComments navigation={navigation} />}
           onShowFull={() => console.log("full")}
           disablePressToShow={false}
           style={HomeStyles.buttonUp}
-          swipeHeight={80}
+          swipeHeight={60}
         />
       )}
-    </View>
+    </ImageBackground>
   );
 };
 

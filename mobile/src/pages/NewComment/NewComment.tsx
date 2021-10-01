@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  TextInput,
-  Image,
-  KeyboardAvoidingView,
-} from "react-native";
+import { Text, View, TextInput, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
 import { Feather } from "@expo/vector-icons";
@@ -47,7 +41,7 @@ const NewComment: React.FC<
   };
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={NewCommentStyles.container}>
+    <View style={NewCommentStyles.container}>
       <View style={NewCommentStyles.box}>
         <Text style={NewCommentStyles.headerText}>Novo comentário</Text>
         <TextInput
@@ -76,7 +70,7 @@ const NewComment: React.FC<
           <Text style={NewCommentStyles.buttonText}>Comentar</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 

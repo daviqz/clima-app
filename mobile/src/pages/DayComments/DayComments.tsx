@@ -4,6 +4,7 @@ import { Feather } from "@expo/vector-icons";
 
 import DayCommentsStyles from "./DayCommentsStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { darkColor } from "../../colors";
 
 interface DayCommentsProps {
   navigation: any;
@@ -16,23 +17,25 @@ const DayComments: React.FC<DayCommentsProps> = ({ navigation }) => {
 
   return (
     <View style={DayCommentsStyles.container}>
-      <View style={DayCommentsStyles.titleContainer}>
-        <Text style={DayCommentsStyles.title}>Comentários de hoje</Text>
-        <TouchableOpacity onPress={addComment}>
-          <Feather name="plus-circle" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
-      <ScrollView>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <View key={index} style={DayCommentsStyles.commentContainer}>
-            <View style={DayCommentsStyles.boxComment}>
-              <Text style={DayCommentsStyles.user}>Usuário</Text>
-              <Text style={DayCommentsStyles.comment}>Comentário</Text>
+      <View style={DayCommentsStyles.box}>
+        <View style={DayCommentsStyles.titleContainer}>
+          <Text style={DayCommentsStyles.title}>Comentários de hoje</Text>
+          <TouchableOpacity onPress={addComment}>
+            <Feather name="plus-circle" size={24} color={darkColor} />
+          </TouchableOpacity>
+        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <View key={index} style={DayCommentsStyles.commentContainer}>
+              <View style={DayCommentsStyles.boxComment}>
+                <Text style={DayCommentsStyles.user}>Usuário</Text>
+                <Text style={DayCommentsStyles.comment}>Comentário</Text>
+              </View>
+              <View style={DayCommentsStyles.image} />
             </View>
-            <View style={DayCommentsStyles.image} />
-          </View>
-        ))}
-      </ScrollView>
+          ))}
+        </ScrollView>
+      </View>
     </View>
   );
 };

@@ -5,20 +5,30 @@ import { darkColor } from "../../colors";
 const HistoryCommentsStyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 120,
+    paddingTop: 90,
     width: "100%",
     padding: 17,
     backgroundColor: darkColor,
   },
+  box: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    width: "100%",
+    padding: 25,
+    height: '96%'
+  },
   title: {
-    fontFamily: "Poppins_600SemiBold",
     fontSize: 20,
-    marginBottom: 10,
+    color: darkColor,
+    marginBottom: 20,
+    fontFamily: "Poppins_500Medium",
+  },
+  dateBox: {
+    marginBottom: 20,
   },
   date: {
     fontFamily: "Poppins_600SemiBold",
     fontSize: 16,
-    marginTop: 20,
     marginBottom: 5,
   },
   commentContainer: {
@@ -43,7 +53,7 @@ const HistoryCommentsStyles = StyleSheet.create({
   image: {
     width: 70,
     height: 70,
-    backgroundColor: "white",
+    backgroundColor: "lightgray",
     borderRadius: 10,
   },
 });

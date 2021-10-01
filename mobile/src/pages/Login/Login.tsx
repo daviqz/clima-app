@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Text,
-  View,
-  TextInput,
-  Image,
-  KeyboardAvoidingView,
-} from "react-native";
+import { Text, View, TextInput, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AntDesign } from "@expo/vector-icons";
@@ -30,7 +24,7 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
   };
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={LoginStyles.container}>
+    <View style={LoginStyles.container}>
       <Image style={LoginStyles.sunImage} source={sun} />
       <View style={LoginStyles.box}>
         <Image style={LoginStyles.cloudImage} source={cloud} />
@@ -70,7 +64,7 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
           <Text style={LoginStyles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 

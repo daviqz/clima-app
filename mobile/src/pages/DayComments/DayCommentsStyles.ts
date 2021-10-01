@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import { darkColor } from "../../colors";
+
 const DayCommentsStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -7,15 +9,23 @@ const DayCommentsStyles = StyleSheet.create({
     width: "100%",
     padding: 7,
   },
+  box: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    width: "100%",
+    padding: 25,
+    height: "96%",
+  },
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 30,
+    marginBottom: 20,
   },
   title: {
-    fontFamily: "Poppins_600SemiBold",
     fontSize: 20,
+    color: darkColor,
+    fontFamily: "Poppins_500Medium",
   },
   commentContainer: {
     flexDirection: "row",
@@ -39,7 +49,7 @@ const DayCommentsStyles = StyleSheet.create({
   image: {
     width: 70,
     height: 70,
-    backgroundColor: "white",
+    backgroundColor: "lightgray",
     borderRadius: 10,
   },
 });

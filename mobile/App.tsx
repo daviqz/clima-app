@@ -34,6 +34,7 @@ import Home from "./src/pages/Home/Home";
 import Login from "./src/pages/Login/Login";
 import HistoryComments from "./src/pages/HistoryComments/HistoryComments";
 import NewComment from "./src/pages/NewComment/NewComment";
+import { darkColor } from "./src/colors";
 
 LogBox.ignoreAllLogs(true);
 
@@ -100,9 +101,12 @@ const App = () => {
               drawerLabel: "Início",
               drawerLabelStyle: {
                 marginLeft: -15,
+                color: darkColor,
+                fontFamily: 'Poppins_400Regular',
+                paddingTop: 4
               },
               drawerIcon: () => (
-                <AntDesign name="home" size={20} color="black" />
+                <AntDesign name="home" size={20} color={darkColor} />
               ),
             }}
           />
@@ -113,9 +117,12 @@ const App = () => {
               drawerLabel: "Entrar",
               drawerLabelStyle: {
                 marginLeft: -15,
+                color: darkColor,
+                fontFamily: 'Poppins_400Regular',
+                paddingTop: 4
               },
               drawerIcon: () => (
-                <MaterialIcons name="login" size={20} color="black" />
+                <MaterialIcons name="login" size={20} color={darkColor} />
               ),
             }}
           />
@@ -126,9 +133,12 @@ const App = () => {
               drawerLabel: "Novo comentário",
               drawerLabelStyle: {
                 marginLeft: -15,
+                color: darkColor,
+                fontFamily: 'Poppins_400Regular',
+                paddingTop: 4
               },
               drawerIcon: () => (
-                <Ionicons name="chatbox-outline" size={20} color="black" />
+                <Ionicons name="chatbox-outline" size={20} color={darkColor} />
               ),
             }}
           />
@@ -139,12 +149,15 @@ const App = () => {
               drawerLabel: "Histórico",
               drawerLabelStyle: {
                 marginLeft: -15,
+                color: darkColor,
+                fontFamily: 'Poppins_400Regular',
+                paddingTop: 4
               },
               drawerIcon: () => (
                 <MaterialCommunityIcons
                   name="history"
                   size={20}
-                  color="black"
+                  color={darkColor}
                 />
               ),
             }}
