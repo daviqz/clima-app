@@ -12,17 +12,20 @@ const HomeStyles = StyleSheet.create({
     fontSize: 25,
     fontFamily: "Poppins_400Regular",
     color: "white",
-    marginTop: 10,
+    marginTop: 30,
     marginBottom: 5,
+    paddingHorizontal: 10,
+    textAlign: "center",
   },
   textFullDate: {
     fontSize: 20,
     fontFamily: "Poppins_300Light",
     color: "white",
     marginBottom: 5,
+    textTransform: "capitalize",
   },
   currentTemperature: {
-    fontSize: 90,
+    fontSize: 80,
     fontFamily: "Poppins_700Bold",
     color: "white",
   },
@@ -37,12 +40,14 @@ const HomeStyles = StyleSheet.create({
     fontFamily: "Poppins_500Medium",
     fontSize: 25,
     marginBottom: 7,
+    paddingHorizontal: 10,
+    textAlign: "center",
   },
   rangeTemperature: {
     color: "white",
     fontFamily: "Poppins_500Medium",
     fontSize: 25,
-    marginBottom: 40,
+    marginBottom: 20,
   },
   containerForecast: {
     flexDirection: "row",
@@ -52,6 +57,10 @@ const HomeStyles = StyleSheet.create({
   boxForecastItem: {
     alignItems: "center",
   },
+  iconForecast: {
+    width: 60,
+    height: 60,
+  },
   rangeTemperatureForecast: {
     fontFamily: "Poppins_500Medium",
     marginVertical: 5,
@@ -60,11 +69,12 @@ const HomeStyles = StyleSheet.create({
   dayForecast: {
     fontSize: 16,
     fontFamily: "Poppins_700Bold",
+    textTransform: "capitalize",
   },
   buttonUp: {
     backgroundColor: lightColor,
     alignItems: "center",
-    paddingTop: 5
+    paddingTop: 5,
   },
 });
 

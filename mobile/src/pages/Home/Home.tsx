@@ -1,11 +1,13 @@
+import moment from "moment";
+import "moment/locale/pt-br";
 import React, { useEffect, useState } from "react";
-import { ImageBackground, Text, View } from "react-native";
+import { Image, ImageBackground, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import SwipeUpDown from "react-native-swipe-up-down";
-import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
+import { getData } from "../../services/asyncStorage";
 import { RootStackParamList } from "../../interfaces/rootStackParamList";
 import DayComments from "../DayComments/DayComments";
 import HomeStyles from "./HomeStyles";
@@ -16,36 +18,44 @@ import bg3 from "../../assets/bg3.jpg";
 import bg4 from "../../assets/bg4.jpg";
 import bg5 from "../../assets/bg5.jpg";
 
-type ForecastDays = {
-  icon: any;
-  rangeTemp: string;
-  day: string;
-};
-
-const forecastItems: ForecastDays[] = [
-  {
-    icon: "rainy-outline",
-    rangeTemp: "12ºc / 22ºc",
-    day: "Hoje",
-  },
-  {
-    icon: "sunny-outline",
-    rangeTemp: "17ºc / 28ºc",
-    day: "Quinta",
-  },
-  {
-    icon: "partly-sunny-outline",
-    rangeTemp: "15ºc / 20ºc",
-    day: "Sexta",
-  },
-];
+moment.locale("pt-br");
 
 const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
   navigation,
 }) => {
   const [currentForescast, setCurrentForeCast] = useState(0);
+  const [forecastData, setForecastData] = useState<any>();
+  const [forecastCurrentData, setForecastCurrentData] = useState<any>();
+  const arrayImages = [bg5];
 
-  const arrayImages = [bg1, bg2, bg3, bg4, bg5];
+  const getForecastData = async () => {
+    const items = await getData();
+    setForecastData(items);
+  };
+
+  useEffect(() => {
+    if (forecastData) {
+      setForecastCurrentData(
+        forecastData.forecast.forecastday[currentForescast]
+      );
+    }
+  }, [currentForescast]);
+
+  useEffect(() => {
+    getForecastData();
+  }, []);
+
+  const minMaxTemperature = (data: any) => {
+    return data
+      ? `${parseInt(data.day.mintemp_c)}ºc / ${parseInt(data.day.maxtemp_c)}ºc`
+      : "";
+  };
+
+  const formatDay = () => {
+    const day = moment(forecastCurrentData.date);
+    const dayOfWeek = day.format("dddd").split("-")[0];
+    return `${dayOfWeek}, ${day.format("DD MMMM")}, ${day.format("YYYY")}`;
+  };
 
   return (
     <ImageBackground
@@ -53,29 +63,51 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
       resizeMode="cover"
       style={HomeStyles.container}
     >
-      <Text style={HomeStyles.textCity}>Juiz de Fora</Text>
-      <Text style={HomeStyles.textFullDate}>Quarta, 13 Outubro, 2021</Text>
-      <Text style={HomeStyles.currentTemperature}>18ºc</Text>
+      <Text style={HomeStyles.textCity}>
+        {forecastData ? forecastData.location.name : ""}
+      </Text>
+      <Text style={HomeStyles.textFullDate}>
+        {forecastCurrentData ? formatDay() : ""}
+      </Text>
+      <Text style={HomeStyles.currentTemperature}>
+        {currentForescast === 0 && forecastData
+          ? `${forecastData.current.temp_c}ºc`
+          : ""}
+      </Text>
       <Text style={HomeStyles.divider}>--------------</Text>
-      <Text style={HomeStyles.currentState}>Nublado</Text>
-      <Text style={HomeStyles.rangeTemperature}>12ºc / 22ºc</Text>
+      <Text style={HomeStyles.currentState}>
+        {forecastCurrentData ? forecastCurrentData.day.condition.text : ""}
+      </Text>
+      <Text style={HomeStyles.rangeTemperature}>
+        {minMaxTemperature(forecastCurrentData)}
+      </Text>
       <View style={HomeStyles.containerForecast}>
-        {forecastItems.map((it, index) => {
-          const color = currentForescast === index ? "#fff200" : "white";
-          return (
-            <TouchableOpacity
-              key={index}
-              style={HomeStyles.boxForecastItem}
-              onPress={() => setCurrentForeCast(index)}
-            >
-              <Ionicons name={it.icon} size={40} color={color} />
-              <Text style={{ ...HomeStyles.rangeTemperatureForecast, color }}>
-                {it.rangeTemp}
-              </Text>
-              <Text style={{ ...HomeStyles.dayForecast, color }}>{it.day}</Text>
-            </TouchableOpacity>
-          );
-        })}
+        {forecastData &&
+          forecastData.forecast.forecastday.map((it: any, index: number) => {
+            const color = currentForescast === index ? "#fff200" : "white";
+            return (
+              <TouchableOpacity
+                key={index}
+                style={HomeStyles.boxForecastItem}
+                onPress={() => setCurrentForeCast(index)}
+              >
+                <Image
+                  style={HomeStyles.iconForecast}
+                  source={{
+                    uri: `https:${it.day.condition.icon}`,
+                  }}
+                />
+                <Text style={{ ...HomeStyles.rangeTemperatureForecast, color }}>
+                  {minMaxTemperature(it)}
+                </Text>
+                <Text style={{ ...HomeStyles.dayForecast, color }}>
+                  {index === 0
+                    ? "Hoje"
+                    : moment(it.date).format("dddd").split("-")[0]}
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
       </View>
       {currentForescast === 0 && (
         <SwipeUpDown

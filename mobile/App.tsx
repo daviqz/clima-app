@@ -20,6 +20,7 @@ import { RootStackParamList } from "./src/interfaces/rootStackParamList";
 
 import api from "./src/services/api";
 import { getForecastUrl } from "./src/utils";
+import { storeData } from "./src/services/asyncStorage";
 
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -65,6 +66,7 @@ const App = () => {
       api
         .get(getForecastUrl(coords.latitude, coords.longitude))
         .then((result) => {
+          storeData(result.data);
           setAppIsLoading(false);
         });
     })();
@@ -89,6 +91,7 @@ const App = () => {
             headerTitle: "Clima App",
             headerRight: () => <LogoutButton />,
             headerTintColor: "white",
+            unmountOnBlur: true,
           }}
           drawerContent={(props: DrawerContentComponentProps) => (
             <CustomDrawer {...props} />
@@ -102,8 +105,8 @@ const App = () => {
               drawerLabelStyle: {
                 marginLeft: -15,
                 color: darkColor,
-                fontFamily: 'Poppins_400Regular',
-                paddingTop: 4
+                fontFamily: "Poppins_400Regular",
+                paddingTop: 4,
               },
               drawerIcon: () => (
                 <AntDesign name="home" size={20} color={darkColor} />
@@ -118,8 +121,8 @@ const App = () => {
               drawerLabelStyle: {
                 marginLeft: -15,
                 color: darkColor,
-                fontFamily: 'Poppins_400Regular',
-                paddingTop: 4
+                fontFamily: "Poppins_400Regular",
+                paddingTop: 4,
               },
               drawerIcon: () => (
                 <MaterialIcons name="login" size={20} color={darkColor} />
@@ -134,8 +137,8 @@ const App = () => {
               drawerLabelStyle: {
                 marginLeft: -15,
                 color: darkColor,
-                fontFamily: 'Poppins_400Regular',
-                paddingTop: 4
+                fontFamily: "Poppins_400Regular",
+                paddingTop: 4,
               },
               drawerIcon: () => (
                 <Ionicons name="chatbox-outline" size={20} color={darkColor} />
@@ -150,8 +153,8 @@ const App = () => {
               drawerLabelStyle: {
                 marginLeft: -15,
                 color: darkColor,
-                fontFamily: 'Poppins_400Regular',
-                paddingTop: 4
+                fontFamily: "Poppins_400Regular",
+                paddingTop: 4,
               },
               drawerIcon: () => (
                 <MaterialCommunityIcons
