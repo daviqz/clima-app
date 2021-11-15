@@ -25,7 +25,7 @@ const DayCommentsStyles = StyleSheet.create({
   title: {
     fontSize: 20,
     color: darkColor,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
   },
   commentContainer: {
     flexDirection: "row",
@@ -40,7 +40,7 @@ const DayCommentsStyles = StyleSheet.create({
   },
   user: {
     fontSize: 20,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
   },
   comment: {
     fontSize: 14,
@@ -49,7 +49,6 @@ const DayCommentsStyles = StyleSheet.create({
   image: {
     width: 70,
     height: 70,
-    backgroundColor: "lightgray",
     borderRadius: 10,
   },
 });

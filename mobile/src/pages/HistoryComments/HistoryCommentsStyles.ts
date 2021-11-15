@@ -15,13 +15,13 @@ const HistoryCommentsStyles = StyleSheet.create({
     borderRadius: 20,
     width: "100%",
     padding: 25,
-    height: '96%'
+    height: "96%",
   },
   title: {
     fontSize: 20,
     color: darkColor,
     marginBottom: 20,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
   },
   dateBox: {
     marginBottom: 20,
@@ -44,7 +44,7 @@ const HistoryCommentsStyles = StyleSheet.create({
   },
   user: {
     fontSize: 20,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
   },
   comment: {
     fontSize: 14,
@@ -53,7 +53,6 @@ const HistoryCommentsStyles = StyleSheet.create({
   image: {
     width: 70,
     height: 70,
-    backgroundColor: "lightgray",
     borderRadius: 10,
   },
 });

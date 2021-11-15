@@ -22,7 +22,7 @@ const NewCommentStyles = StyleSheet.create({
     marginTop: 10,
     color: darkColor,
     marginBottom: 10,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     letterSpacing: 1,
   },
   input: {
@@ -32,7 +32,7 @@ const NewCommentStyles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: 5,
     color: darkColor,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     paddingHorizontal: 20,
   },
   imageContainer: {
@@ -63,7 +63,7 @@ const NewCommentStyles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     fontSize: 18,
   },
 });

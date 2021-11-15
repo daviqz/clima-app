@@ -34,7 +34,7 @@ const LoginStyles = StyleSheet.create({
     marginTop: 15,
     color: darkColor,
     marginBottom: 20,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     letterSpacing: 1,
   },
   iconInput: {
@@ -50,7 +50,7 @@ const LoginStyles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: 15,
     color: darkColor,
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     paddingHorizontal: 45,
     paddingTop: 3
   },
@@ -65,7 +65,7 @@ const LoginStyles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     fontSize: 18,
   },
 });

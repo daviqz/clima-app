@@ -1,10 +1,10 @@
 import { Secret } from "jsonwebtoken"
 
 export const DATABASE = {    
-    user: process.env.DATABASE_USER,
-    host: process.env.DATABASE_HOST,
-    database: process.env.DATABASE_NAME,
-    password: process.env.DATABASE_PASSWORD,
+    user: 'wwqvmxvxkdgupq',
+    host: 'ec2-34-228-100-83.compute-1.amazonaws.com',
+    database: 'dk6mt61t0piat',
+    password: 'b22e868d1ff9498693ca28a17bdd4f07612965e081d435cd9a3050daba1f0411',
     port: 5432,
     ssl: {
         rejectUnauthorized: false
@@ -12,4 +12,4 @@ export const DATABASE = {
     connectionTimeoutMillis: 10000
 }
 
-export const JWT_SECRET_KEY: Secret = process.env.JWT_SECRET_KEY || ''
+export const JWT_SECRET_KEY: Secret = '5641lkzis4!@#@!#45124ASD2!$6'

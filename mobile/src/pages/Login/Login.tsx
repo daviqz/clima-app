@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Text, View, TextInput, Image } from "react-native";
+import React, { useState, memo } from "react";
+import { Text, View, TextInput, Image, Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AntDesign } from "@expo/vector-icons";
@@ -10,17 +10,40 @@ import { darkColor, lightColor } from "../../colors";
 import LoginStyles from "./LoginStyles";
 import cloud from "../../assets/cloud.png";
 import sun from "../../assets/sun.png";
+import api, { BASE_URL } from "../../services/api";
+import { storeLoggedUser } from "../../services/asyncStorage";
+import { signIn } from "../../store/Actions";
+import { connect } from "react-redux";
 
-const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
-  navigation,
-}) => {
-  const [username, setUsername] = useState("");
+const Login: React.FC<
+  NativeStackScreenProps<RootStackParamList, "Login"> & { signInDispatch: any }
+> = ({ navigation, signInDispatch }) => {
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const goToHome = () => {
-    setUsername("");
-    setPassword("");
-    navigation.navigate("Home");
+    if (name !== "" && password !== "") {
+      setIsLoading(true);
+      api
+        .post(`${BASE_URL}/user/login`, { name, password })
+        .then(async (response) => {
+          if (response.data.message) {
+            setIsLoading(false);
+            Alert.alert("Atenção", response.data.message);
+          } else {
+            await storeLoggedUser(response.data);
+            signInDispatch(response.data);
+            setName("");
+            setPassword("");
+            setIsLoading(false);
+            navigation.navigate("Home");
+          }
+        });
+    } else {
+      setIsLoading(false);
+      Alert.alert("Atenção", "Usuário e senha são obrigatórios!");
+    }
   };
 
   return (
@@ -38,9 +61,9 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
           />
           <TextInput
             style={LoginStyles.input}
-            onChangeText={setUsername}
+            onChangeText={setName}
             placeholder="Usuário"
-            value={username}
+            value={name}
             placeholderTextColor={lightColor}
           />
         </View>
@@ -60,7 +83,11 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
             secureTextEntry
           />
         </View>
-        <TouchableOpacity style={LoginStyles.button} onPress={goToHome}>
+        <TouchableOpacity
+          style={LoginStyles.button}
+          onPress={goToHome}
+          disabled={isLoading}
+        >
           <Text style={LoginStyles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -68,4 +95,8 @@ const Login: React.FC<NativeStackScreenProps<RootStackParamList, "Login">> = ({
   );
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch: any) => ({
+  signInDispatch: (loggedUser: any) => dispatch(signIn(loggedUser)),
+});
+
+export default connect(null, mapDispatchToProps)(memo(Login));

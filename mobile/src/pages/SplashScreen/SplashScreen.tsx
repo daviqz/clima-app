@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     fontSize: 23,
     color: "white",
-    fontFamily: "Poppins_500Medium",
+    fontFamily: "Poppins_400Regular",
     textAlign: 'center',
     paddingHorizontal: 40
   },

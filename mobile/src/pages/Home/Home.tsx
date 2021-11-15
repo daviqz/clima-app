@@ -39,7 +39,7 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
         forecastData.forecast.forecastday[currentForescast]
       );
     }
-  }, [currentForescast]);
+  }, [forecastData, currentForescast]);
 
   useEffect(() => {
     getForecastData();
@@ -71,7 +71,7 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
       </Text>
       <Text style={HomeStyles.currentTemperature}>
         {currentForescast === 0 && forecastData
-          ? `${forecastData.current.temp_c}ºc`
+          ? `${parseInt(forecastData.current.temp_c)}ºc`
           : ""}
       </Text>
       <Text style={HomeStyles.divider}>--------------</Text>
@@ -113,7 +113,6 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
         <SwipeUpDown
           itemMini={<AntDesign name="up" size={25} color="white" />}
           itemFull={<DayComments navigation={navigation} />}
-          onShowFull={() => console.log("full")}
           disablePressToShow={false}
           style={HomeStyles.buttonUp}
           swipeHeight={60}
