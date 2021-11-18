@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo } from "react";
-import { Text, View, ScrollView, Image } from "react-native";
+import { Text, View, ScrollView, Image, ActivityIndicator } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import ImageView from "react-native-image-view";
 
@@ -18,6 +18,7 @@ const DayComments: React.FC<DayCommentsProps> = ({
   loggedUser,
   navigation,
 }) => {
+  const [loading, setLoading] = useState(true);
   const [commentsDay, setCommentsDay] = useState([]);
   const [modalImage, setModalImage] = useState<any>([]);
 
@@ -27,6 +28,7 @@ const DayComments: React.FC<DayCommentsProps> = ({
 
   useEffect(() => {
     api.get(`${BASE_URL}/comments-day`).then(async (response) => {
+      setLoading(false);
       setCommentsDay(response.data);
     });
   }, []);
@@ -41,10 +43,11 @@ const DayComments: React.FC<DayCommentsProps> = ({
           </TouchableOpacity>
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {commentsDay.length === 0 && (
+          {loading && <ActivityIndicator size="large" color={darkColor} />}
+          {!loading && commentsDay.length === 0 && (
             <Text
               style={{
-                ...DayCommentsStyles.comment,
+                ...DayCommentsStyles.message,
                 textAlign: "center",
                 marginTop: 20,
               }}
@@ -52,6 +55,7 @@ const DayComments: React.FC<DayCommentsProps> = ({
               Nenhum comentário foi feito hoje!
             </Text>
           )}
+
           {commentsDay.map((it: any, index) => (
             <View key={index} style={DayCommentsStyles.commentContainer}>
               <View style={DayCommentsStyles.boxComment}>

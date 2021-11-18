@@ -36,6 +36,7 @@ const DayCommentsStyles = StyleSheet.create({
     borderRadius: 6,
   },
   boxComment: {
+    flex: 1,
     justifyContent: "space-between",
   },
   user: {
@@ -43,6 +44,11 @@ const DayCommentsStyles = StyleSheet.create({
     fontFamily: "Poppins_400Regular",
   },
   comment: {
+    fontSize: 14,
+    fontFamily: "Poppins_300Light",
+    width: "80%",
+  },
+  message: {
     fontSize: 14,
     fontFamily: "Poppins_300Light",
   },
