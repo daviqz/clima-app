@@ -25,7 +25,7 @@ export default class CommentService {
       FROM
         comments c 
       LEFT JOIN users u ON c.id_user = u.id
-        WHERE DATE(c.created_at) = DATE(NOW())
+        WHERE DATE(c.created_at) = DATE(NOW() - INTERVAL '3 hours')
         ORDER BY c.created_at DESC, u.name ASC
       `
     );

@@ -26,7 +26,7 @@ const Home: React.FC<NativeStackScreenProps<RootStackParamList, "Home">> = ({
   const [currentForescast, setCurrentForeCast] = useState(0);
   const [forecastData, setForecastData] = useState<any>();
   const [forecastCurrentData, setForecastCurrentData] = useState<any>();
-  const arrayImages = [bg5];
+  const arrayImages = [bg4];
 
   const getForecastData = async () => {
     const items = await getData();
