@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "tsc src/server.ts",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
+    "start": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "argon2": "^0.28.2",
