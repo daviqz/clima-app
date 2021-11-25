@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 
-import Routes from "./Routes";
+import Routes from "./routes";
 class Server {
   public express: express.Application;
   public routes: Routes;
