@@ -32,7 +32,7 @@ class Server {
     let privateRoute = this.routes
       .get()
       .find(
-        (route) =>
+        (route: any) =>
           route.needAuth &&
           this.samePath(route.path, req.path) &&
           route.method === req.method.toLowerCase()
@@ -57,7 +57,7 @@ class Server {
     this.express.use(express.json());
     this.express.use(this.interceptor.bind(this));
 
-    this.routes.get().forEach((route) => {
+    this.routes.get().forEach((route: any) => {
       switch (route.method) {
         case "get":
           this.express.get(route.path, route.handler);
